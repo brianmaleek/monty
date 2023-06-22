@@ -71,8 +71,12 @@ extern data_s global_var;
 
 /*prototypes*/
 void add_node(stack_t **stack, unsigned int line_number); /*push*/
-void add_node_end(stack_t **stack, unsigned int line_number);
 void print_reverse (stack_t **stack, unsigned int line_number); /*pall*/
+void top_node(stack_t **stack, unsigned int line_number); /*pint*/
+void swap_node(stack_t **stack, unsigned int line_number); /*swap*/
+void remove_node(stack_t **stack, unsigned int line_number); /*pop*/
+void add_node_top(stack_t **stack, unsigned int line_number); /*push*/
+void nop(stack_t **stack, unsigned int line_number); /*nop*/
 
 /*memory*/
 void free_stack(stack_t *stack);

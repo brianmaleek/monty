@@ -16,6 +16,11 @@ int get_command(stack_t **stack, char *line, unsigned int counter, FILE *fr)
 	instruction_t opcodes[] = {
 		{"push", add_node},
 		{"pall", print_reverse},
+		{"pint", top_node},
+		{"pop", remove_node},
+		{"swap", swap_node},
+		{"add", add_node_top},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 

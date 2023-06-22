@@ -76,3 +76,76 @@ void print_reverse(stack_t **stack, unsigned int line_number
 		tmp = tmp->prev;
 	}
 }
+
+void top_node(stack_t **stack, unsigned int line_number)
+{
+	/*pall*/
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		fclose(global_var.fr);
+		free(global_var.line);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
+}
+
+
+/**
+ * remove_node - deletes the head node of a stack_t list
+ * @stack: pointer to the head of the stack
+ * @line_number: line number of the opcode
+ *
+ * Return: void
+ */
+void remove_node(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = *stack;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		fclose(global_var.fr);
+		free(global_var.line);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->next == NULL)
+	{
+		free(*stack);
+		*stack = NULL;
+		return;
+	}
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	free(tmp);
+}
+
+/**
+ * swap_node - swaps the top two elements of the stack
+ * @stack: pointer to the head of the stack
+ * @line_number: line number of the opcode
+ *
+ * Return: void
+ */
+void swap_node(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = *stack;
+	int n;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		fclose(global_var.fr);
+		free(global_var.line);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	n = tmp->n;
+	tmp->n = tmp->next->n;
+	tmp->next->n = n;
+}
+
+
