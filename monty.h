@@ -77,6 +77,12 @@ void swap_node(stack_t **stack, unsigned int line_number); /*swap*/
 void remove_node(stack_t **stack, unsigned int line_number); /*pop*/
 void add_node_top(stack_t **stack, unsigned int line_number); /*push*/
 void nop(stack_t **stack, unsigned int line_number); /*nop*/
+void mod_node_top(stack_t **stack, unsigned int line_number); /*mod*/
+void pchar_node_top(stack_t **stack, unsigned int line_number); /*pchar*/
+void pstr_node_top(stack_t **stack, unsigned int line_number); /*pstr*/
+void rotl_node_top(stack_t **stack, unsigned int line_number); /*rotl*/
+void rotr_node_top(stack_t **stack, unsigned int line_number); /*rotr*/
+
 
 /*memory*/
 void free_stack(stack_t *stack);

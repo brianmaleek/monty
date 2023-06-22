@@ -1,6 +1,5 @@
 #include "monty.h"
 
-
 /**
 * get_command - get the command
 * @stack: pointer to the head of the stack
@@ -21,6 +20,11 @@ int get_command(stack_t **stack, char *line, unsigned int counter, FILE *fr)
 		{"swap", swap_node},
 		{"add", add_node_top},
 		{"nop", nop},
+		{"mod", mod_node_top},
+		{"pchar", pchar_node_top},
+		{"pstr", pstr_node_top},
+		{"rotl", rotl_node_top},
+		{"rotr", rotr_node_top},
 		{NULL, NULL}
 	};
 
