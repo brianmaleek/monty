@@ -67,19 +67,28 @@ void print_reverse(stack_t **stack, unsigned int line_number
 	/*pall*/
 	stack_t *tmp = *stack;
 
-	while (tmp->next != NULL)
-		tmp = tmp->next;
+	if (tmp == NULL)
+		return;
 
-	while (tmp != NULL)
+	while (tmp)
 	{
 		printf("%d\n", tmp->n);
-		tmp = tmp->prev;
+		tmp = tmp->next;
 	}
 }
 
+
+/*
+* top_node - prints the value at the top of the stack
+* @stack: pointer to the head of the stack
+* @line_number: line number of the opcode
+*
+* Return: void
+*/
+
 void top_node(stack_t **stack, unsigned int line_number)
 {
-	/*pall*/
+	/*pint*/
 
 	if (*stack == NULL)
 	{
@@ -102,25 +111,23 @@ void top_node(stack_t **stack, unsigned int line_number)
  */
 void remove_node(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp = *stack;
+	/*pop*/
+	stack_t *head = *stack;
 
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		fclose(global_var.fr);
-		free(global_var.line);
-		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	if ((*stack)->next == NULL)
-	{
-		free(*stack);
-		*stack = NULL;
-		return;
+	else{
+		/*set the head to the next node*/
+		*stack = (*stack)->next;
+		/*set the new head's prev to NULL*/
+		if (*stack != NULL)
+			(*stack)->prev = NULL;
+		/*free the old head*/
+		free(head);
 	}
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	free(tmp);
 }
 
 /**
