@@ -45,7 +45,7 @@ int get_command(stack_t **stack, char *line, unsigned int counter, FILE *fr)
 			return (0);
 		}
 		index++;
-	} while (opcodes[index].opcode != NULL);
+	} while (opcodes[index].opcode && operation != NULL);
 
 	if (operation && opcodes[index].opcode == NULL)
 	{
