@@ -10,6 +10,7 @@
 
 void add_node_top(stack_t **stack, unsigned int line_number)
 {
+	/*add*/
 	stack_t *tmp = *stack;
 	int n;
 
@@ -21,8 +22,11 @@ void add_node_top(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
+	/*add the second top node to the top node*/
 	n = tmp->n + tmp->next->n;
+	/*set the top node to the sum*/
 	tmp->next->n = n;
+	/*remove the top node*/
 	remove_node(stack, line_number);
 }
 
@@ -36,6 +40,7 @@ void add_node_top(stack_t **stack, unsigned int line_number)
 void nop(stack_t **stack, unsigned int line_number
 	__attribute__((unused)))
 {
+	/*nop*/
 	(void)stack;
 	(void)line_number;
 }
@@ -59,9 +64,12 @@ void sub_node_top(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
+	/*subtract the second top node from the top node*/
 	res = tmp->next->n - tmp->n;
+	/*set the top node to the difference*/
 	tmp->next->n = res;
-	free_stack(*stack);
+	/*remove the top node*/
+	remove_node(stack, line_number);
 }
 
 /**
@@ -91,9 +99,12 @@ void div_node_top(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
+	/*divide the second top node by the top node*/
 	res = tmp->next->n / tmp->n;
+	/*set the top node to the quotient*/
 	tmp->next->n = res;
-	free_stack(*stack);
+	/*remove the top node*/
+	remove_node(stack, line_number);
 }
 
 /**
@@ -115,7 +126,10 @@ void mul_node_top(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
+	/*multiply the second top node by the top node*/
 	res = tmp->n * tmp->next->n;
+	/*set the top node to the product*/
 	tmp->next->n = res;
-	free_stack(*stack);
+	/*remove the top node*/
+	remove_node(stack, line_number);
 }

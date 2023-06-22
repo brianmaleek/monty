@@ -141,7 +141,7 @@ void remove_node(stack_t **stack, unsigned int line_number)
 void swap_node(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
-	int n;
+	int res;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
@@ -151,9 +151,12 @@ void swap_node(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	n = tmp->n;
+	/*set the head to the next node*/
+	res = tmp->n;
+	/*set the next node to node after that*/
 	tmp->n = tmp->next->n;
-	tmp->next->n = n;
+	/*set the next => next node to the head=>next node*/
+	tmp->next->n = res;
 }
 
 

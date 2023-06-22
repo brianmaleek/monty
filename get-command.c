@@ -13,31 +13,21 @@
 int get_command(stack_t **stack, char *line, unsigned int counter, FILE *fr)
 {
 	instruction_t opcodes[] = {
-		{"push", add_node},
-		{"pall", print_reverse},
-		{"pint", top_node},
-		{"pop", remove_node},
-		{"swap", swap_node},
-		{"add", add_node_top},
-		{"nop", nop},
-		{"mod", mod_node_top},
-		{"pchar", pchar_node_top},
-		{"pstr", pstr_node_top},
-		{"rotl", rotl_node_top},
-		{"rotr", rotr_node_top},
+		{"push", add_node}, {"pall", print_reverse},
+		{"pint", top_node}, {"pop", remove_node},
+		{"swap", swap_node}, {"add", add_node_top},
+		{"nop", nop}, {"mod", mod_node_top},
+		{"pchar", pchar_node_top}, {"pstr", pstr_node_top},
+		{"rotl", rotl_node_top}, {"rotr", rotr_node_top},
 		{NULL, NULL}
 	};
-
 	unsigned int index = 0;
 	char *operation;
 
 	operation = strtok(line, " \n\t");
-
 	if (operation && operation[0] == '#')
 		return (0);
-
 	global_var.args = strtok(NULL, " \n\t");
-
 	do {
 		if (strcmp(operation, opcodes[index].opcode) == 0)
 		{
