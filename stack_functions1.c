@@ -78,7 +78,7 @@ void print_reverse(stack_t **stack, unsigned int line_number
 }
 
 
-/*
+/**
 * top_node - prints the value at the top of the stack
 * @stack: pointer to the head of the stack
 * @line_number: line number of the opcode
@@ -119,7 +119,8 @@ void remove_node(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	else{
+	else
+	{
 		/*set the head to the next node*/
 		*stack = (*stack)->next;
 		/*set the new head's prev to NULL*/
